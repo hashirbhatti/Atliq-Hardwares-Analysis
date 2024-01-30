@@ -3,14 +3,19 @@ USE gdb023;
 
 
 
--- Q1: Provide the list of markets in which customer "Atliq Exclusive" operates its business in the APAC region.
+/*
+Q1: Provide the list of markets in which customer 
+"Atliq Exclusive" operates its business in the APAC region.
+*/
 SELECT DISTINCT market
 FROM dim_customer
 WHERE customer = 'Atliq Exclusive' AND region = 'APAC';
 
 
 
--- Q2: What is the percentage of unique product increase in 2021 vs. 2020?
+/*
+Q2: What is the percentage of unique product increase in 2021 vs. 2020?
+*/
 WITH UniqueProducts AS (
     SELECT
         fiscal_year,
@@ -22,7 +27,7 @@ WITH UniqueProducts AS (
 SELECT
     UP_2020.unique_products_count AS unique_products_2020,
     UP_2021.unique_products_count AS unique_products_2021,
-    ROUND(((UP_2021.unique_products_count - UP_2020.unique_products_count) * 100.0) / UP_2020.unique_products_count, 2) AS percentage_chg
+    ROUND(((UP_2021.unique_products_count - UP_2020.unique_products_count) * 100.0) / UP_2020.	unique_products_count, 2) AS percentage_chg
 FROM
     UniqueProducts UP_2020
     CROSS JOIN UniqueProducts UP_2021
@@ -32,7 +37,8 @@ WHERE
 
 
 
--- Q3: Provide a report with all the unique product counts for each segment and sort them in descending order of product counts.
+/* Q3: Provide a report with all the unique product counts for 
+each segment and sort them in descending order of product counts. */
 SELECT
     segment,
     COUNT(DISTINCT product) AS product_count
@@ -45,7 +51,7 @@ ORDER BY
 
 
 
--- Q4: Which segment had the most increase in unique products in 2021 vs 2020?
+/* Q4: Which segment had the most increase in unique products in 2021 vs 2020? */
 WITH UniqueProducts AS (
     SELECT
         dp.segment,
@@ -75,7 +81,7 @@ ORDER BY
 
 
 
--- Q5: Get the products that have the highest and lowest manufacturing costs.
+/* Q5: Get the products that have the highest and lowest manufacturing costs. */
 SELECT 
     dm.product_code,
     dm.product,
@@ -92,8 +98,8 @@ ORDER BY
 
 
 
--- Q6: Generate a report which contains the top 5 customers who received an average 
--- high pre_invoice_discount_pct for the fiscal year 2021 and in the Indian market.
+/* Q6: Generate a report which contains the top 5 customers who received an average 
+high pre_invoice_discount_pct for the fiscal year 2021 and in the Indian market. */
 SELECT
     dc.customer_code,
     dc.customer,
@@ -113,9 +119,9 @@ LIMIT 5;
 
 
 
--- Q7: Get the complete report of the Gross sales amount for the customer “Atliq
--- Exclusive” for each month. This analysis helps to get an idea of low and
--- high-performing months and take strategic decisions.
+/* Q7: Get the complete report of the Gross sales amount for the customer
+“Atliq Exclusive” for each month. This analysis helps to get an idea of low
+and high-performing months and take strategic decisions. */
 SELECT
 	MONTH(fsm.date) AS "Month",
     YEAR(fsm.date) AS "Year",
@@ -135,7 +141,7 @@ ORDER BY
 
 
 
--- Q8: Calculate the total sold quantity for each quarter in 2020
+/* Q8: Calculate the total sold quantity for each quarter in 2020 */
 WITH QuarterSales AS (
     SELECT
         CASE
@@ -163,7 +169,8 @@ ORDER BY
 
 
     
--- Q9: Which channel helped to bring more gross sales in the fiscal year 2021 and the percentage of contribution?
+/* Q9: Which channel helped to bring more gross sales in the 
+fiscal year 2021 and the percentage of contribution? */
 WITH ChannelGrossSales AS (
     SELECT
         dc.channel,
@@ -204,7 +211,8 @@ ORDER BY
 
 
 
--- Q10: Get the Top 3 products in each division that have a high total_sold_quantity in the fiscal_year 2021?
+/* Q10: Get the Top 3 products in each division that have a 
+high total_sold_quantity in the fiscal_year 2021? */
 WITH RankedProducts AS (
     SELECT
         dp.division,
