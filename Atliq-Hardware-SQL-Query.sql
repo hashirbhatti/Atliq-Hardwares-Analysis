@@ -123,7 +123,7 @@ LIMIT 5;
 “Atliq Exclusive” for each month. This analysis helps to get an idea of low
 and high-performing months and take strategic decisions. */
 SELECT
-	MONTH(fsm.date) AS "Month",
+    MONTH(fsm.date) AS "Month",
     YEAR(fsm.date) AS "Year",
     ROUND(SUM(fgp.gross_price * fsm.sold_quantity), 2) AS "Gross Sales Amount"
 FROM
