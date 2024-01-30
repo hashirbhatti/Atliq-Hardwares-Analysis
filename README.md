@@ -13,9 +13,11 @@ To assess and identify suitable candidates, Mr. Sharma has devised a SQL challen
 In this project, we will leverage SQL queries to analyze and derive valuable insights from a dataset within the context of Atliq Hardwares, a leading computer hardware producer. The dataset encompasses various aspects of the company's operations, allowing us to address a series of pertinent questions and provide actionable information to support decision-making. The project involves a comprehensive exploration of the data through ten key questions:
 
 1. **Market Analysis for Atliq Exclusive:** Provide the list of markets in which customer "Atliq Exclusive" operates its business in the APAC region.
+
 ![Screenshot (68)](https://github.com/hashirbhatti/Atliq-Hardwares-Analysis/assets/77647802/86f59723-b8e2-4908-849a-f46fd188629a)
 
 3. **Product Growth Comparison:** What is the percentage of unique product increase in 2021 vs. 2020?
+
 ![Screenshot (69)](https://github.com/hashirbhatti/Atliq-Hardwares-Analysis/assets/77647802/1e65d691-2a38-43f2-84ba-1f84ee8b8148)
 
 5. **Segment-wise Product Counts:** Provide a report with all the unique product counts for each segment and sort them in descending order of product counts.
